@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import os, requests, json
 
@@ -13,19 +13,29 @@ from models import Recipe
 
 
 @app.route('/')
-def hello():
+def init():
+	return redirect('/index')
+
+@app.route('/index')
+def index():
 	data = db.session.query(Recipe).all()
 	print(type(data))
 	print(data)
 	for i in data:
 		print(i.name)
-	return render_template('list.html', title='RecipeList', first_name1=data[0].id, last_name1=data[0].name)
+	return render_template('index.html')
+	#return render_template('list.html', title='RecipeList', first_name1=data[0].id, last_name1=data[0].name)
 	#return "Hello World!"
 
+@app.route('/recipe_post', methods=['GET'])
+def recipe_post():
+	print('what do u mean')
+	return render_template('recipe_post.html')
 
-@app.route('/<name>')
-def hello_name(name):
-    return "Hello {}!".format(name)
+
+#@app.route('/<name>')
+#def hello_name(name):
+#    return "Hello {}!".format(name)
 
 @app.route('/api/random', methods=['GET'])
 def get_random():
