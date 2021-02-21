@@ -29,8 +29,24 @@ def index():
 
 @app.route('/recipe_post', methods=['GET'])
 def recipe_post():
-	print('what do u mean')
-	return render_template('recipe_post.html')
+	params = request.args
+	recipes = []
+	response = requests.get('https://api.spoonacular.com/recipes/random?apiKey=' + API_KEY +'&number=1').json()
+
+	for i in response:
+		items = {}
+		for j in response[i]:
+			recipes.append(j)
+
+	#print(recipes[0]['analyzedInstructions'])
+	print(recipes[0]['spoonacularSourceUrl'])
+	#<h4>{{ recipe['analyzedInstructions'][0]['steps'][recipe]['number'] }}:</h4> 
+	return render_template('recipe_post.html',  
+		recipe_title=recipes[0]['title'], 		
+		recipes=recipes, 						
+		steps=recipes[0]['analyzedInstructions'][0]['steps'],
+		ingredients=recipes[0]['extendedIngredients']
+	)
 
 
 #@app.route('/<name>')
