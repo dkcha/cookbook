@@ -8,7 +8,7 @@ DESCRIPTION: HTML and CSS for the Leaderboard page
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Program 5</title>
+    <title>Cookbook Random Recipe</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -46,6 +46,69 @@ DESCRIPTION: HTML and CSS for the Leaderboard page
 	}
   </style>
   <body>
+  	<div class="container">
+
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <div class="recipe-headline my-5">
+                            <h2>{{ recipe_title }}</h2>
+                            <div class="recipe-duration">
+                                <h6>Ready in: {{ recipes[0]['readyInMinutes'] }} mins</h6>
+                                <h6>Yields: {{ recipes[0]['servings'] }} Servings</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <div class="recipe-ratings text-right my-5">
+                            <div class="ratings">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                            </div>
+                            <a href="#" class="btn delicious-btn">For Begginers</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <!-- WIP for Recipe Steps -->
+                        {% for recipe in recipes %}
+                             {% for step in steps %}
+                                <div class="single-preparation-step d-flex">
+                                    <h4>{{ step['number'] }}</h4>
+                                    <p>{{ step['step'] }}</p>
+                                </div>
+                              {% endfor %}
+
+                        {% endfor %}
+                        
+                    </div>
+
+                    <!-- Ingredients -->
+                    <div class="col-12 col-lg-4">
+                        <div class="ingredients">
+                            <h4>Ingredients</h4>
+
+                            {% for ingredient in ingredients %}
+                                <!-- Custom Checkbox -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1">{{ ingredient['originalString'] }}</label>
+                                </div>
+                            {% endfor %}
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+                
+            </div>
+
   	<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
 	  	<div class="w3-display-middle">
 	  		<div style="background-color:#000000; text-align:left; vertical-align: middle; padding:25px 25px;"> 

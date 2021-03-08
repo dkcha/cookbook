@@ -45,9 +45,15 @@ def recipe_post():
 		recipe_title=recipes[0]['title'], 		
 		recipes=recipes, 						
 		steps=recipes[0]['analyzedInstructions'][0]['steps'],
-		ingredients=recipes[0]['extendedIngredients']
+		ingredients=recipes[0]['extendedIngredients'],
+		recipe_image=recipes[0]['image'],
+		recipe_base=recipes[0]
 	)
 
+
+@app.route('/contact', methods=['GET'])
+def contact():
+	return render_template('contact.html')
 
 #@app.route('/<name>')
 #def hello_name(name):
@@ -58,7 +64,7 @@ def get_random():
 	params = request.args
 	recipes = []
 	#items = []
-	response = requests.get('https://api.spoonacular.com/recipes/random?apiKey=' + API_KEY +'&number=2').json()
+	response = requests.get('https://api.spoonacular.com/recipes/random?apiKey=' + API_KEY +'&number=1').json()
 
 	#print(response)
 
@@ -89,8 +95,10 @@ def get_random():
 
 	#for i in items:
 	#	print(items['spoonacularSourceUrl'])
-	print(recipes)
-	return render_template('list.html', title='RecipeList', recipes=recipes)
+	return render_template('list.html', ecipe_title=recipes[0]['title'], 		
+		recipes=recipes, 						
+		steps=recipes[0]['analyzedInstructions'][0]['steps'],
+		ingredients=recipes[0]['extendedIngredients'])
 
 if __name__ == '__main__':
     app.run()

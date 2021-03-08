@@ -9,7 +9,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Delicious - Food Blog Template | recipe Post</title>
+    <title>Cookbook | Random Recipe</title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -55,9 +55,9 @@
                         <div class="breaking-news">
                             <div id="breakingNewsTicker" class="ticker">
                                 <ul>
-                                    <li><a href="#">Hello World!</a></li>
-                                    <li><a href="#">Welcome to Colorlib Family.</a></li>
-                                    <li><a href="#">Hello Delicious!</a></li>
+                                    <li><a href="#">Cookbook Website</a></li>
+                                    <li><a href="#">Search for recipes using ingredients you have</a></li>
+                                    <li><a href="#">Created by @dkcha w/ help from Colorlib</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -66,12 +66,7 @@
                     <!-- Top Social Info -->
                     <div class="col-12 col-sm-6">
                         <div class="top-social-info text-right">
-                            <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <a href="https://www.linkedin.com/in/dkcha/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
@@ -111,7 +106,7 @@
                                             <li><a href="about.html">About Us</a></li>
                                             <li><a href="blog-post.html">Blog Post</a></li>
                                             <li><a href="{{ url_for('recipe_post') }}">recipe Post</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="{{ url_for('contact') }}">Contact</a></li>
                                             <li><a href="elements.html">Elements</a></li>
                                             <li><a href="#">Dropdown</a>
                                                 <ul class="dropdown">
@@ -119,7 +114,7 @@
                                                     <li><a href="about.html">About Us</a></li>
                                                     <li><a href="blog-post.html">Blog Post</a></li>
                                                     <li><a href="{{ url_for('recipe_post') }}">recipe Post</a></li>
-                                                    <li><a href="contact.html">Contact</a></li>
+                                                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
                                                     <li><a href="elements.html">Elements</a></li>
                                                     <li><a href="#">Dropdown</a>
                                                         <ul class="dropdown">
@@ -127,7 +122,7 @@
                                                             <li><a href="about.html">About Us</a></li>
                                                             <li><a href="blog-post.html">Blog Post</a></li>
                                                             <li><a href="{{ url_for('recipe_post') }}">recipe Post</a></li>
-                                                            <li><a href="contact.html">Contact</a></li>
+                                                            <li><a href="{{ url_for('contact') }}">Contact</a></li>
                                                             <li><a href="elements.html">Elements</a></li>
                                                         </ul>
                                                     </li>
@@ -161,7 +156,7 @@
                                                 <li><a href="about.html">About Us</a></li>
                                                 <li><a href="blog-post.html">Blog Post</a></li>
                                                 <li><a href="{{ url_for('recipe_post') }}">recipe Post</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
+                                                <li><a href="c{{ url_for('contact') }}">Contact</a></li>
                                                 <li><a href="elements.html">Elements</a></li>
                                             </ul>
                                             <div class="single-mega cn-col-4">
@@ -172,9 +167,8 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li><a href="{{ url_for('recipe_post') }}">Receipies</a></li>
-                                    <li><a href="{{ url_for('recipe_post') }}">4 Vegans</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="{{ url_for('recipe_post') }}">Random Recipe</a></li>
+                                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
                                 </ul>
 
                                 <!-- Newsletter Form -->
@@ -262,27 +256,16 @@
                 <div class="row">
                     <div class="col-12 col-md-8">
                         <div class="recipe-headline my-5">
-                            <span>April 05, 2018</span>
+                            <img src="{{ recipe_image }}" width="200" height="200">
                             <h2>{{ recipe_title }}</h2>
                             <div class="recipe-duration">
                                 <h6>Ready in: {{ recipes[0]['readyInMinutes'] }} mins</h6>
                                 <h6>Yields: {{ recipes[0]['servings'] }} Servings</h6>
+                                <h6><a href="{{ recipe_base['sourceUrl'] }}"  style="color:blue">Source URL</a></h6>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-12 col-md-4">
-                        <div class="recipe-ratings text-right my-5">
-                            <div class="ratings">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                            </div>
-                            <a href="#" class="btn delicious-btn">For Begginers</a>
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <div class="row">
@@ -354,82 +337,6 @@
         </div>
     </div>
 
-    <!-- ##### Follow Us Instagram Area Start ##### -->
-    <div class="follow-us-instagram">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h5>Follow Us Instragram</h5>
-                </div>
-            </div>
-        </div>
-        <!-- Instagram Feeds -->
-        <div class="insta-feeds d-flex flex-wrap">
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="static/img/bg-img/insta1.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="static/img/bg-img/insta2.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="static/img/bg-img/insta3.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="static/img/bg-img/insta4.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="static/img/bg-img/insta5.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="static/img/bg-img/insta6.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-
-            <!-- Single Insta Feeds -->
-            <div class="single-insta-feeds">
-                <img src="static/img/bg-img/insta7.jpg" alt="">
-                <!-- Icon -->
-                <div class="insta-icon">
-                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ##### Follow Us Instagram Area End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
@@ -438,12 +345,7 @@
                 <div class="col-12 h-100 d-flex flex-wrap align-items-center justify-content-between">
                     <!-- Footer Social Info -->
                     <div class="footer-social-info text-right">
-                        <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/dkcha/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                     </div>
                     <!-- Footer Logo -->
                     <div class="footer-logo">
