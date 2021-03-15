@@ -6,10 +6,10 @@ import os, requests, json
 app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+#db = SQLAlchemy(app)
 API_KEY = 'df65b5e6b04543ed9b6dcb739521e1cc'
 
-from models import Recipe
+#from models import Recipe
 
 
 @app.route('/')
@@ -18,11 +18,11 @@ def init():
 
 @app.route('/index')
 def index():
-	data = db.session.query(Recipe).all()
-	print(type(data))
-	print(data)
-	for i in data:
-		print(i.name)
+	#data = db.session.query(Recipe).all()
+	#print(type(data))
+	#print(data)
+	#for i in data:
+#		print(i.name)
 	return render_template('index.html')
 	#return render_template('list.html', title='RecipeList', first_name1=data[0].id, last_name1=data[0].name)
 	#return "Hello World!"
