@@ -18,56 +18,56 @@
 
 <body>
         <!-- recipe Content Area -->
-        <div class="recipe-content-area">
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-12 col-md-8">
-                        <div class="recipe-headline my-5">
-                            <img src="{{ recipe_image }}" width="200" height="200">
-                            <h2>{{ recipe_title }}</h2>
-                            <div class="recipe-duration">
-                                <h6>Ready in: {{ recipes[0]['readyInMinutes'] }} mins</h6>
-                                <h6>Yields: {{ recipes[0]['servings'] }} Servings</h6>
-                                <h6><a href="{{ recipe_base['sourceUrl'] }}"  style="color:blue">Source URL</a></h6>
-                            </div>
-                        </div>
-                    </div>
-                    
+        <div class="wrapper">
+            <div class="one">
+                <img src="{{ recipe_image }}" width="200" height="200">
+                <h2>{{ recipe_title }}</h2>
+                <div class="recipe-duration">
+                    <h6>Ready in: {{ recipes[0]['readyInMinutes'] }} mins</h6>
+                    <h6>Yields: {{ recipes[0]['servings'] }} Servings</h6>
+                    <h6><a href="{{ recipe_base['sourceUrl'] }}"  style="color:blue">Source URL</a></h6>
                 </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-12 col-lg-8">
-                        <!-- WIP for Recipe Steps -->
+            <div class="navbar">
+                <div class="item"><a href="{{ url_for('index') }}">Home</a></div>
+                <div class="item"><a href="{{ url_for('recipe_post') }}">Recipe Post</a></div>
+
+            </div>
+
+                <div class="two">
+                    <table>
+                        <!-- WIP for Recipe Steps // MIDDLE COL -->
                         {% for recipe in recipes %}
-                             {% for step in steps %}
-                                <div class="single-preparation-step d-flex">
+                            
+                            {% for step in steps %}
+                                 <tr>
                                     <h4>{{ step['number'] }}</h4>
                                     <p>{{ step['step'] }}</p>
-                                </div>
-                              {% endfor %}
+                                </tr>
+                            {% endfor %}
+
+                              
 
                         {% endfor %}
                         
-                    </div>
-
-                    <!-- Ingredients -->
-                    <div class="col-12 col-lg-4">
-                        <div class="ingredients">
-                            <h4>Ingredients</h4>
-
-                            {% for ingredient in ingredients %}
-                                <!-- Custom Checkbox -->
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1">{{ ingredient['originalString'] }}</label>
-                                </div>
-                            {% endfor %}
-                            
-                        </div>
-                    </div>
+                    </table>
                 </div>
 
+                <!-- Ingredients // RIGHT COL -->
+                <div class="ingredients">
+                    <h4>Ingredients</h4>
+
+                    {% for ingredient in ingredients %}
+                        <!-- Custom Checkbox -->
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">{{ ingredient['originalString'] }}</label>
+                        </div>
+                    {% endfor %}
+                    
+                </div>
+        </div>
 
 </body>
 

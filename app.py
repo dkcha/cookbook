@@ -46,7 +46,7 @@ def recipe_post():
 		recipes=recipes, 						
 		steps=recipes[0]['analyzedInstructions'][0]['steps'],
 		ingredients=recipes[0]['extendedIngredients'],
-		recipe_image=recipes[0]['image'],
+		recipe_image=recipes[0]['image'] if recipes[0]['image'] else None,
 		recipe_base=recipes[0]
 	)
 

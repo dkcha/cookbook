@@ -1,23 +1,83 @@
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
-  background-color: #000000;
+@font-face {
+  font-family: NotoSans;
+  src: url(../static/fonts/NotoSans-Regular.ttf);
+}
+
+html { 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: contain;
+  font-family: NotoSans;
+}
+
+body {
+  font-family: NotoSans;
 }
 
 .container {
-  display: grid;
-  grid-template-columns: auto auto;
-  background-color: #FFFFFF;
-  padding: 10px;
-  border-radius: 10px;
+  width: auto;
+  height: 100vh;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search {
+  text-align: center;
+  height: 600px;
+  width: 700px;
+  background: #efefef;
+  margin-left: 2px;
+  border: 1px solid #ccc;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.search img {
+  display: block;
+  margin: auto;
+  width: 80%;
+  height: 60%;
+}
+
+.search-recipe {
+  margin: 20px;
+  padding: 20px;
+}
+
+.navigation {
+  height: 600px;
+  width: 300px;
+  background: #efefef;
+  margin-left: 2px;
+  border: 1px solid #ccc;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .item {
-  background-color: #80cbc4;
-  border: 1px solid #fff;
-  padding: 20px;
-  font-size: 30px;
   text-align: center;
+  vertical-align: middle;
+  border: double;
+  padding-top: : 5px;
+  margin: 10px;
+}
+
+
+.ingredients {
+  grid-column: 3;
+  grid-row: 2 / 5;
+  border: 10px solid #fff;
+}
+
+.ingredients input, label {
+  color: #000000;
+}
+
+
+.recipe-duration h6 {
+  color: #FFFFFF;
 }

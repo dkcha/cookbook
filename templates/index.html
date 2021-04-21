@@ -19,16 +19,23 @@
 <body>
     <!-- Fix grid layout abc -->
     <div class="container">
-        <div class="container">
+        <div class="search">
             <h1>Cookbook</h1>
             <p>A website to curate recipes based on your choices</p>
+            <img src="../static/img/header.jpg" width="200" height="200">
+
+            <form class="search-recipe">
+                <input type="text" id="recipe" name="recipe" placeholder="Search using an ingredient..">
+                <input type="submit" value="Submit">
+            </form>
+
         </div>
 
-        <div class="container">
+        <div class="navigation">
             <div class="item"><a href="{{ url_for('index') }}">Home</a></div>
             <div class="item"><a href="{{ url_for('recipe_post') }}">Recipe Post</a></div>
-
         </div>
+        
     </div>
 
 </body>
